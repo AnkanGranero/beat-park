@@ -1,10 +1,65 @@
 @import url(//fonts.googleapis.com/css?family=Indie+Flower);
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes antiSpin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes antiSpin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@keyframes antiSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+#app {
+  position: relative;
+}
+
 body {
-  background: url("./src/assets/background.gif");
+  background: url("./src/assets/pictures/backgroundFive.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
-.menu {
+/* .menu {
   padding: 0;
   list-style: none;
   position: relative;
@@ -12,6 +67,20 @@ body {
   width: 70%;
   height: 0;
   padding-top: 70%;
+  top: 50%;
+} */
+.menu {
+  padding: 0;
+  list-style: none;
+  margin: 30px auto;
+  width: 70%;
+  height: 0;
+  padding-top: 70%;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 @media all and (max-width: 320px) {
@@ -19,6 +88,7 @@ body {
     width: 230px;
     height: 230px;
     padding: 0;
+    overflow: hidden;
   }
 }
 @media all and (min-width: 700px) {
@@ -26,8 +96,30 @@ body {
     width: 700px;
     height: 700px;
     padding: 0;
+    overflow: hidden;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 40000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 40000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 40000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    -o-transition: rotate(3600deg);
+    animation-play-state: paused;
   }
 }
+h1 {
+  text-align: center;
+  font-size: 100px;
+  margin-bottom: 100px;
+  /* color: white; */
+}
+
 .menu li {
   position: absolute;
   top: 0;
@@ -35,95 +127,16 @@ body {
   width: 100%;
   height: 100%;
   clip-path: url(#sector);
-  /* try this one in Chrome/Opera/Safari */
-  /* clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%); */
+  overflow: hidden;
 }
 .menu li a {
   display: block;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .menu li:hover {
-  background-color: gold;
   background-color: #0099ff;
-}
-
-.one {
-  background-color: #e980e9;
-  background-color: #f7c108;
-  background-color: #65fae6;
-  /*  background-image: url("./src/assets/backgroundTwo.jpg"); */
-  transform: rotate(0deg);
-}
-
-.two {
-  background-color: #e462e4;
-  background-color: #65dcfa;
-  /*  background-image: url("./src/assets/backgroundThree.jpg"); */
-  transform: rotate(-60deg);
-}
-
-.three {
-  background-color: #de43de;
-  background-color: #a1abdb;
-  background-color: #65fae6;
-  /*  background-image: url("./src/assets/backgroundFour.jpg"); */
-  transform: rotate(-120deg);
-}
-
-.four {
-  background-color: #d825d8;
-  background-color: #b877af;
-  background-color: #eca58c;
-  background-color: #86f3aa;
-  /* background-image: url("./src/assets/backgroundTwo.jpg"); */
-  transform: rotate(-180deg);
-}
-
-.five {
-  background-color: #ba20ba;
-  /*  background-image: url("./src/assets/backgroundBlue.jpg"); */
-  background-color: #a3785f;
-  background-color: #5ae7d0;
-  background-color: #65dcfa;
-  transform: rotate(-240deg);
-}
-
-.six {
-  background-color: #9c1b9c;
-  background-color: #e95d32;
-  background-color: #86f3aa;
-  /*  background-image: url("./src/assets/backgroundGreen.jpg"); */
-  transform: rotate(-300deg);
-}
-
-.one .icon {
-  background: url("./src/assets/drumsNew.gif") no-repeat right top;
-  background-size: 100%;
-  transform: rotate(0deg);
-}
-
-.two .icon {
-  background: url("./src/assets/chickenNew.gif") no-repeat right top;
-  background-size: 100%;
-}
-
-.three .icon {
-  background: url("./src/assets/dogNew.gif") no-repeat right top;
-  background-size: 100%;
-  transform: rotate(120deg);
-}
-
-.four .icon {
-  background: url("./src/assets/synthNew.gif") no-repeat right top;
-  background-size: 100%;
-  transform: rotate(-190deg);
-}
-
-.five .icon {
-  background: url("./src/assets/elephantNew.gif") no-repeat right top;
-  background-size: 100%;
-  transform: rotate(-120deg);
 }
 
 .icon {
@@ -135,17 +148,109 @@ body {
   width: 150px;
   border-radius: 50%;
   /* make sure it it rotated enough; angle of rotation = angle of the sector itself */
-  transform: rotate(60deg);
   /* style further as needed */
   background-color: #f5e728;
-  font-family: Indie Flower;
-  font-size: 25px;
+  -webkit-animation-name: antiSpin;
+  -webkit-animation-duration: 40000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: antiSpin;
+  -moz-animation-duration: 40000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: antiSpin;
+  -ms-animation-duration: 40000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+  background: red;
+  overflow: hidden;
+  animation-play-state: paused;
+}
+
+.one {
+  background-color: #e980e9;
+  background-color: #65fae6;
+  transform: rotate(0deg);
+}
+
+.two {
+  background-color: #e462e4;
+  background-color: #65dcfa;
+  transform: rotate(-60deg);
+}
+
+.three {
+  background-color: #de43de;
+  background-color: #65fae6;
+  transform: rotate(-120deg);
+}
+
+.four {
+  background-color: #86f3aa;
+  transform: rotate(-180deg);
+}
+
+.five {
+  background-color: #65dcfa;
+  transform: rotate(-240deg);
+}
+
+.six {
+  background-color: #86f3aa;
+  transform: rotate(-300deg);
+}
+
+.one .icon {
+  -webkit-animation-delay: 0s;
+  -ms-animation-animation-delay: 0s;
+  -moz-animation-animation-delay: 0s;
+}
+
+.two .icon {
+  -webkit-animation-delay: -33s;
+  -ms-animation-animation-delay: 33s;
+  -moz-animation-animation-delay: 33s;
+}
+
+.three .icon {
+  animation-delay: -3s;
+  -webkit-animation-delay: -27s;
+  -ms-animation-animation-delay: -27s;
+  -moz-animation-animation-delay: -27s;
+}
+
+.four .icon {
+  -webkit-animation-delay: -19s;
+  -ms-animation-animation-delay: -19s;
+  -moz-animation-animation-delay: -19s;
+}
+
+.five .icon {
+  -webkit-animation-delay: -13s;
+  -ms-animation-animation-delay: -13s;
+  -moz-animation-animation-delay: -13s;
+}
+
+.six .icon {
+  -webkit-animation-delay: -7s;
+  -ms-animation-animation-delay: -7s;
+  -moz-animation-animation-delay: -7s;
+}
+
+.icon img {
+  /*  height:300px; fun peeking animal*/
+  height: 100%;
 }
 
 p {
   text-align: center;
   width: 80%;
   margin: 0 auto;
+}
+
+.spin {
+  animation-play-state: running;
 }
 
 /*# sourceMappingURL=index.css.map */
